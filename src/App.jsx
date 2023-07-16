@@ -116,10 +116,10 @@ function App() {
       (item) => item.id === title
     )?.isFirstOpen; // if previous card is already opened
     if (!isFirstCard) {
-      if(firstCardTitle && firstCardTitle !== title) {
-        alert("you can't click on another card");
-        return;
-      }
+      // if(firstCardTitle && firstCardTitle !== title) {
+      //   alert("you can't click on another card");
+      //   return;
+      // }
       setFirstCardTitle(title);
       // if previous card is not opened
       ManageFirstCardclick(title, id);
