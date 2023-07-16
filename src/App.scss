@@ -1,17 +1,101 @@
-.cards-wrapper {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 10px;
-  width: 500px;
-}
+
+// placeholders 
 %flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+// placeholders 
+$black : #181d31;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#root {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  @extend %flex-center;
+  padding: 0 20px;
+}
+
+
+//  button 
+.button {
+  height: 30px;
+  font-size: 14px;
+  padding: 0 10px;
+  background: $black;
+  color: #fff;
+  border-radius: 3px;
+  border: 1px solid $black;
+  text-transform: capitalize;
+  box-shadow: 0px 3px 5px #20202049;
+  transition: all 0.2s cubic-bezier(0.79, 1.14, 0.96, 0.99);
+  &.green {
+    margin-left: 10px;
+    background: #5cb85c;
+    border-color: #5cb85c;
+    color: #fff;
+    &:hover {
+      color: #5cb85c !important;
+    }
+  }
+  &.danger {
+    margin-left: 10px;
+    background: #dc3535;
+    border-color: #dc3535;
+    color: #fff;
+    &:hover {
+      color: #dc3535 !important;
+    }
+  }
+  &.blue {
+    margin-left: 10px;
+    background: #068FFF;
+    border-color: #068FFF;
+    color: #fff;
+    &:hover {
+      color: #068FFF !important;
+    }
+  }
+  &:hover:not(:disabled) {
+    box-shadow: none;
+    background: none;
+    color: $black;
+  }
+}
+// button 
+.wrapper {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.cards-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  max-width: 440px;
+  width: 100%;
+  margin: 40px auto 10px;
+}
 .card {
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  aspect-ratio: 1/1;
+  max-width: 100px;
+  max-height: 100px;
   position: relative;
   @extend %flex-center;
   border-radius: 8px;
@@ -22,8 +106,10 @@
     background: #181d31;
     color: #fff;
     backface-visibility: hidden;
+    border-radius: 8px;
     transform: perspective(1000px) rotateY(0deg);
     transition: 1s;
+    border: 2px solid $black;
     @extend %flex-center;
     box-shadow: 0px 3px 5px #20202049;
   }
@@ -33,17 +119,19 @@
     left: 0;
     width: 100%;
     height: 100%;
+    border-radius: 8px;
     backface-visibility: hidden;
     transform: perspective(1000px) rotateY(-180deg);
     transition: 1s;
     @extend %flex-center;
+    border: 2px solid $black;
     box-shadow: 0px 3px 5px #20202049;
     img {
-      width: 70px;
-      height: 70px;
+      width: 70%;
+      height: 70%;
     }
   }
-  &:hover {
+  &.flip, &.isClicked , &.isMatched {
     .front {
       transform: perspective(1000px) rotateY(180deg);
     }
